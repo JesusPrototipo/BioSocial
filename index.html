@@ -1,97 +1,206 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BioLink Distribuidora Mona</title>
 
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Distribuidora Mona | Redes</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Fuente -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#ff0080,#ff4da6);
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.card{
+max-width:420px;
+width:100%;
+border:none;
+animation:fadein .8s ease;
+}
+
+@keyframes fadein{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.social-btn{
+transition:all .25s;
+background:white;
+}
+
+.social-btn:hover{
+transform:scale(1.07);
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.counter{
+font-size:14px;
+opacity:.8;
+}
+
+</style>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NFD4CC95');</script>
+<!-- End Google Tag Manager -->
+
 </head>
 
-<body class="min-vh-100 d-flex align-items-center justify-content-center bg-gradient" style="background-color:#ff0080;">
+<body>
 
-  <div class="card text-center shadow-lg rounded-4 p-4"
-       style="max-width: 400px; width: 100%; font-family: 'Poppins', sans-serif;">
 
-    <!-- Avatar -->
-    <img src="DBM.png"
-         alt="Avatar"
-         class="rounded-circle mx-auto d-block mb-2"
-         width="200"
-         height="200">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NFD4CC95"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
-    <!-- Bio -->
-    <div class="text-dark mb-4">
-      <strong>Luce Mona, Ponte Mona ✨</strong><br>
-      Sigue nuestras redes sociales o contáctanos<br>
-      •••••••••••••••••••••••••@•••••••••••••••••••••••••
-    </div>
+<div class="card shadow-lg rounded-4 text-center p-4">
 
-    <!-- BOTONES EN 2 COLUMNAS -->
-    <div class="row g-3 justify-content-center">
+<img src="DBM.png"
+class="rounded-circle mx-auto mb-3"
+width="180">
 
-      <div class="col-6">
-        <a href="https://www.facebook.com/DistribuidoradeBellezaMona/" 
-        target="_blank"
-        class="btn btn-light rounded-3 w-100">
-          <img src="Facebook.png" class="img-fluid" alt="Facebook">
-        </a>
-      </div>
+<h4 class="fw-bold">Distribuidora Mona</h4>
 
-      <div class="col-6">
-        <a href="https://wa.me/528781736361?text=¡Hola!%20Quiero%20más%20informacion%20de" 
-        target="_blank"
-        class="btn btn-light rounded-3 w-100">
-          <img src="Whatsapp.png" class="img-fluid" alt="WhatsApp">
-        </a>
-      </div>
+<div class="mb-4">
+<strong>Luce Mona, Ponte Mona ✨</strong><br>
+Sigue nuestras redes sociales
+</div>
 
-      <div class="col-6">
-        <a href="https://www.instagram.com/distribuidoradebellezamona?utm_source=qr&igsh=MWNjODJheGpnYXFtYQ==" 
-        target="_blank"
-        class="btn btn-light rounded-3 w-100">
-          <img src="Insta.png" class="img-fluid" alt="Instagram">
-        </a>
-      </div>
+<div class="row g-3">
 
-      <div class="col-6">
-        <a href="https://www.tiktok.com/@distrimona" 
-        target="_blank"
-        class="btn btn-light rounded-3 w-100">
-          <img src="Tiktok.png" class="img-fluid" alt="TikTok">
-        </a>
-      </div>
+<div class="col-6">
+<a onclick="track('facebook')"
+href="https://www.facebook.com/DistribuidoradeBellezaMona/"
+target="_blank"
+class="btn social-btn w-100 rounded-3">
+<img src="Facebook.png" class="img-fluid">
+</a>
+</div>
 
-      <!-- Google Maps -->
-      <div class="col-6">
-        <a href="https://www.google.com/maps?q=Distribuidora+de+Belleza+Mona"
-           target="_blank"
-           class="btn btn-light rounded-3 w-100">
-          <img src="Gmaps.png" class="img-fluid" alt="Ubicación">
-        </a>
-      </div>
+<div class="col-6">
+<a onclick="track('whatsapp')"
+href="https://wa.me/528781736361?text=¡Hola!%20Quiero%20más%20informacion"
+target="_blank"
+class="btn social-btn w-100 rounded-3">
+<img src="Whatsapp.png" class="img-fluid">
+</a>
+</div>
 
-      <!-- Llamar -->
-      <div class="col-6">
-        <a href="tel:+528781736361"
-           class="btn btn-light rounded-3 w-100">
-          <img src="Phone.png" class="img-fluid" alt="Llamar">
-        </a>
-      </div>
+<div class="col-6">
+<a onclick="track('instagram')"
+href="https://www.instagram.com/distribuidoradebellezamona"
+target="_blank"
+class="btn social-btn w-100 rounded-3">
+<img src="Insta.png" class="img-fluid">
+</a>
+</div>
 
-    </div>
+<div class="col-6">
+<a onclick="track('tiktok')"
+href="https://www.tiktok.com/@distrimona"
+target="_blank"
+class="btn social-btn w-100 rounded-3">
+<img src="Tiktok.png" class="img-fluid">
+</a>
+</div>
 
-    <!-- Footer -->
-    <div class="text-dark small mt-4">
-      Mar Negro 1969, Col. Año 2000, Piedras Negras, Coahuila<br>
-      © 2026 · Distribuidora de Belleza Mona 😎
-    </div>
+<div class="col-6">
+<a onclick="track('maps')"
+href="https://www.google.com/maps?q=Distribuidora+de+Belleza+Mona"
+target="_blank"
+class="btn social-btn w-100 rounded-3">
+<img src="Gmaps.png" class="img-fluid">
+</a>
+</div>
 
-  </div>
+<div class="col-6">
+<a onclick="track('telefono')"
+href="tel:+528781736361"
+class="btn social-btn w-100 rounded-3">
+<img src="Phone.png" class="img-fluid">
+</a>
+</div>
+
+</div>
+
+<div class="mt-4 small">
+
+Mar Negro 1969<br>
+Col. Año 2000<br>
+Piedras Negras, Coahuila
+
+</div>
+
+<div class="counter mt-3">
+
+👀 Visitas:  
+<span id="visitas1">Cargando...</span>
+
+</div>
+
+<div class="small mt-2">
+
+© 2026 Distribuidora Mona 😎
+
+</div>
+
+</div>
+
+<script>
+
+function track(red){
+
+if(typeof gtag === "function"){
+
+gtag('event','click_red',{
+'event_category':'redes',
+'event_label':red
+});
+
+}
+
+}
+
+</script>
+
+<!-- Contador simple -->
+<script>
+
+const namespace = 'mona-visitas';
+
+let visitas = localStorage.getItem(namespace);
+
+if(!visitas){
+
+visitas = Math.floor(Math.random()*100)+50;
+
+}
+
+visitas++;
+
+localStorage.setItem(namespace,visitas);
+
+document.getElementById("visitas").innerText = visitas;
+
+</script>
 
 </body>
 </html>
