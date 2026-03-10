@@ -53,13 +53,15 @@ opacity:.8;
 
 </style>
 
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NFD4CC95');</script>
-<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-100XW4J4SL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-100XW4J4SL');
+</script>
 
 </head>
 
@@ -88,6 +90,7 @@ Sigue nuestras redes sociales
 
 <div class="col-6">
 <a onclick="track('facebook')"
+  onclick="trackClick('facebook')"
 href="https://www.facebook.com/DistribuidoradeBellezaMona/"
 target="_blank"
 class="btn social-btn w-100 rounded-3">
@@ -97,6 +100,7 @@ class="btn social-btn w-100 rounded-3">
 
 <div class="col-6">
 <a onclick="track('whatsapp')"
+  onclick="trackClick('whatsapp')"
 href="https://wa.me/528781736361?text=¡Hola!%20Quiero%20más%20informacion"
 target="_blank"
 class="btn social-btn w-100 rounded-3">
@@ -106,6 +110,7 @@ class="btn social-btn w-100 rounded-3">
 
 <div class="col-6">
 <a onclick="track('instagram')"
+  onclick="trackClick('instagram')"
 href="https://www.instagram.com/distribuidoradebellezamona"
 target="_blank"
 class="btn social-btn w-100 rounded-3">
@@ -115,6 +120,7 @@ class="btn social-btn w-100 rounded-3">
 
 <div class="col-6">
 <a onclick="track('tiktok')"
+  onclick="trackClick('tiktok')"
 href="https://www.tiktok.com/@distrimona"
 target="_blank"
 class="btn social-btn w-100 rounded-3">
@@ -124,6 +130,7 @@ class="btn social-btn w-100 rounded-3">
 
 <div class="col-6">
 <a onclick="track('maps')"
+  onclick="trackClick('maps')"
 href="https://www.google.com/maps?q=Distribuidora+de+Belleza+Mona"
 target="_blank"
 class="btn social-btn w-100 rounded-3">
@@ -133,6 +140,7 @@ class="btn social-btn w-100 rounded-3">
 
 <div class="col-6">
 <a onclick="track('telefono')"
+  onclick="trackClick('telefono')"
 href="tel:+528781736361"
 class="btn social-btn w-100 rounded-3">
 <img src="Phone.png" class="img-fluid">
@@ -181,24 +189,18 @@ gtag('event','click_red',{
 
 </script>
 
-<!-- Contador simple -->
-<script>
+<!-- Contador clicks -->
 
-const namespace = 'mona-visitas';
+  <script>
 
-let visitas = localStorage.getItem(namespace);
+function trackClick(nombre){
 
-if(!visitas){
-
-visitas = Math.floor(Math.random()*100)+50;
+gtag('event','click_red', {
+  event_category: 'redes',
+  event_label: nombre
+});
 
 }
-
-visitas++;
-
-localStorage.setItem(namespace,visitas);
-
-document.getElementById("visitas").innerText = visitas;
 
 </script>
 
