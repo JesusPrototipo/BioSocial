@@ -147,32 +147,39 @@ box-shadow:0 10px 20px rgba(0,0,0,.3);
 
 <div class="row g-4 justify-content-center">
 
+<!-- BOTÓN FACEBOOK -->
 <div class="col-md-3 col-6">
-<a onclick="trackClick('facebook')"
-href="https://www.facebook.com/DistribuidoradeBellezaMona/"
-target="_blank"
-class="btn social-btn">
-<img src="images/Facebook.png" class="img-fluid">
-</a>
+  <a onclick="trackClick('facebook', 'https://www.facebook.com/DistribuidoradeBellezaMona')" 
+     href="https://www.facebook.com/DistribuidoradeBellezaMona" 
+     target="_blank" 
+     class="btn social-btn"
+     rel="noopener noreferrer">
+    <img src="images/Facebook.png" class="img-fluid" alt="Facebook Distribuidora de Belleza Mona">
+  </a>
 </div>
 
 
+<!-- BOTÓN INSTAGRAM -->
 <div class="col-md-3 col-6">
-<a onclick="trackClick('instagram')"
-href="https://www.instagram.com/distribuidoradebellezamona"
-target="_blank"
-class="btn social-btn">
-<img src="images/Insta.png" class="img-fluid">
-</a>
-</div>
+  <a onclick="trackClick('instagram', 'https://www.instagram.com/distribuidoradebellezamona')" 
+     href="https://www.instagram.com/distribuidoradebellezamona" 
+     target="_blank" 
+     class="btn social-btn"
+     rel="noopener noreferrer">
+    <img src="images/Insta.png" class="img-fluid" alt="Instagram Distribuidora de Belleza Mona">
+  </a>
 
+
+</div>
+<!-- BOTÓN TIKTOK -->
 <div class="col-md-3 col-6">
-<a onclick="trackClick('tiktok')"
-href="https://www.tiktok.com/@distrimona"
-target="_blank"
-class="btn social-btn">
-<img src="images/Tiktok.png" class="img-fluid">
-</a>
+  <a onclick="trackClick('tiktok', 'https://www.tiktok.com/@distrimona')" 
+     href="https://www.tiktok.com/@distrimona" 
+     target="_blank" 
+     class="btn social-btn"
+     rel="noopener noreferrer">
+    <img src="images/TikTok.png" class="img-fluid" alt="TikTok @distrimona">
+  </a>
 </div>
 
 
@@ -209,28 +216,96 @@ Ver en Google Maps
 
 <!-- WHATSAPP FLOAT -->
 
-<a class="whatsapp-float"onclick="trackClick('whatsapp')"
-href="https://wa.me/528781736361?text=¡Hola!%20Quiero%20más%20informacion"
-target="_blank"
->
-<img src="images/whatsapp.png" class="img-fluid">
-
-</a>
+<a class="whatsapp-float" onclick="trackClick('whatsapp', 'https://wa.me/528781736361?text=¡Hola!%20Quiero%20más%20informacion')"href="https://wa.me/528781736361?text=¡Hola!%20Quiero%20más%20informacion" 
+     target="_blank" 
+     rel="noopener noreferrer">
+    <img src="images/whatsapp.png" class="img-fluid">
+  </a>
 
 
 
-
-<!-- TRACKING CLICKS -->
+<!-- TRACKING CLICKS PARA DISTRIBUIDORA MONA -->
 <script>
+function trackClick(red, url) {
+  console.log('🔍 Click detectado en: ' + red); // Para verificar en consola
+  
+  // Verificar que gtag existe
+  if (typeof gtag === 'function') {
+    // Evento para Google Analytics
+    gtag('event', 'click_red_social', {
+      'event_category': 'redes_sociales',
+      'event_label': red,
+      'event_action': 'click',
+      'link_url': url,
+      'send_to': 'G-2TYP3YZYL0'
+    });
+    
+    console.log('✅ Evento enviado: ' + red);
+    
+  } else {
+    console.warn('⚠️ gtag no disponible - guardando localmente');
+    // Backup: guardar en localStorage
+    guardarClickPendiente(red, url);
+  }
+}
 
-function trackClick(red){
+// Función de respaldo
+function guardarClickPendiente(red, url) {
+  try {
+    let clicksPendientes = localStorage.getItem('clicks_pendientes_mona');
+    clicksPendientes = clicksPendientes ? JSON.parse(clicksPendientes) : [];
+    
+    clicksPendientes.push({
+      red: red,
+      url: url,
+      timestamp: new Date().toISOString(),
+      pagina: window.location.pathname
+    });
+    
+    localStorage.setItem('clicks_pendientes_mona', JSON.stringify(clicksPendientes));
+    console.log('💾 Click guardado localmente: ' + red);
+  } catch(e) {
+    console.error('Error guardando click:', e);
+  }
+}
 
-gtag('event','click_red',{
-event_category:'redes',
-event_label:red
+// Intentar enviar clicks pendientes cuando se restablezca la conexión
+function enviarClicksPendientes() {
+  if (typeof gtag !== 'function') return;
+  
+  try {
+    let clicksPendientes = localStorage.getItem('clicks_pendientes_mona');
+    if (!clicksPendientes) return;
+    
+    clicksPendientes = JSON.parse(clicksPendientes);
+    
+    clicksPendientes.forEach(click => {
+      gtag('event', 'click_red_social_backup', {
+        'event_category': 'redes_sociales',
+        'event_label': click.red,
+        'link_url': click.url,
+        'timestamp': click.timestamp
+      });
+    });
+    
+    // Limpiar después de enviar
+    localStorage.removeItem('clicks_pendientes_mona');
+    console.log('📤 Clicks pendientes enviados: ' + clicksPendientes.length);
+    
+  } catch(e) {
+    console.error('Error enviando clicks pendientes:', e);
+  }
+}
+
+// Intentar enviar pendientes cuando la página carga
+window.addEventListener('load', function() {
+  // Esperar 3 segundos para asegurar que gtag cargue
+  setTimeout(enviarClicksPendientes, 3000);
 });
 
-}
+// También intentar cuando la conexión se restablece
+window.addEventListener('online', enviarClicksPendientes);
+
 </script>
 </body>
 </html>
